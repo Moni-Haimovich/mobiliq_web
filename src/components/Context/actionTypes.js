@@ -1,6 +1,6 @@
 const ActionTypes = {
-  SET_LOADING: 'set_loading',
   SET_PROPERTIES: 'set_properties',
+  SET_FILTERED_PROPERTIES: 'set_filtered_properties',
   SET_CUR_PROPERTY: 'set_cur_property',
 };
 

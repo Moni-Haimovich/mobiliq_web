@@ -5,13 +5,10 @@ import * as _ from 'lodash';
 import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import TextField from '@material-ui/core/TextField';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { Property } from '../Property/Property';
-import { useFindProperty } from '../../hooks/useFindProperty';
 import ActionTypes from '../Context/actionTypes';
 import { DispatchContext, StateContext } from '../Context/Context';
 
@@ -34,37 +31,30 @@ const useStyles = makeStyles((theme) => ({
 const Sidebar = () => {
   const [searchKey, setSearchKey] = React.useState('');
 
-  const { data: useFindPropertyData, fetchProperty } = useFindProperty();
-
   const classes = useStyles();
   const dispatch = React.useContext(DispatchContext);
-  const { properties } = React.useContext(StateContext);
+  const { properties, filteredProperties } = React.useContext(StateContext);
 
   const onChangeSearchKey = React.useCallback((ev) => {
     setSearchKey(ev.target.value);
   }, []);
 
-  const onSearchProperty = React.useCallback(async () => {
-    if (!searchKey) return;
-    fetchProperty(searchKey);
-  }, [searchKey, fetchProperty]);
-
   const propertyRenderer = React.useMemo(() => {
-    if (_.isEmpty(properties)) return null;
+    if (_.isEmpty(filteredProperties)) return null;
 
-    return properties.map((p, index) => (
+    return filteredProperties.map((p, index) => (
       <Property key={index.toString()} property={p} />
     ));
-  }, [properties]);
+  }, [filteredProperties]);
 
   React.useEffect(() => {
-    if (useFindPropertyData) {
-      dispatch({
-        type: ActionTypes.SET_PROPERTIES,
-        payload: useFindPropertyData,
-      });
-    }
-  }, [dispatch, useFindPropertyData]);
+    if (!properties) return;
+
+    const temp = [...properties].filter(({ name }) =>
+      name.toLowerCase().includes(searchKey.toLowerCase()),
+    );
+    dispatch({ type: ActionTypes.SET_FILTERED_PROPERTIES, payload: temp });
+  }, [dispatch, properties, searchKey]);
 
   return (
     <Grid container spacing={1} className={classes.sidebar}>
@@ -79,16 +69,7 @@ const Sidebar = () => {
             type="search"
             variant="outlined"
             InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="search"
-                    color="primary"
-                    onClick={onSearchProperty}>
-                    <SearchIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
+              startAdornment: <SearchIcon />,
             }}
             value={searchKey}
             onChange={onChangeSearchKey}

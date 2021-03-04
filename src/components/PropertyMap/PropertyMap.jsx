@@ -67,7 +67,7 @@ const PropertyMap = ({ google }) => {
   const [isLastImg, setIsLastImg] = React.useState(false);
 
   const classes = useStyles();
-  const { properties } = React.useContext(StateContext);
+  const { filteredProperties: properties } = React.useContext(StateContext);
 
   const onClickMarker = React.useCallback((props, marker, ev) => {
     setProperty(props.property);

@@ -3,8 +3,8 @@ import React from 'react';
 import ActionTypes from './actionTypes';
 
 const initialState = {
-  isLoading: false,
   properties: [],
+  filteredProperties: [],
   curProperty: {},
 };
 
@@ -15,15 +15,15 @@ const reducer = (state, action) => {
         ...state,
         properties: action.payload,
       };
+    case ActionTypes.SET_FILTERED_PROPERTIES:
+      return {
+        ...state,
+        filteredProperties: action.payload,
+      };
     case ActionTypes.SET_CUR_PROPERTY:
       return {
         ...state,
         curProperty: action.payload,
-      };
-    case ActionTypes.SET_LOADING:
-      return {
-        ...state,
-        isLoading: action.payload,
       };
     default:
       return state;
@@ -33,8 +33,12 @@ const reducer = (state, action) => {
 const StateContext = React.createContext();
 const DispatchContext = React.createContext();
 
-const ContextProvider = ({ children }) => {
+const ContextProvider = ({ children, properties }) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
+
+  React.useEffect(() => {
+    dispatch({ type: ActionTypes.SET_PROPERTIES, payload: properties });
+  }, [dispatch, properties]);
 
   return (
     <StateContext.Provider value={state}>

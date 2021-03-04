@@ -1,31 +1,30 @@
 import React from 'react';
 
-import { findProperty } from '../services/property-service';
+import { STATUS } from '../utils/status';
+import { findPropertyByName } from '../services/property-service';
 
 export const useFindProperty = () => {
   const [data, setData] = React.useState();
   const [error, setError] = React.useState();
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [status, setStatus] = React.useState(STATUS.NONE);
 
   const fetchProperty = React.useCallback(async (name) => {
-    setIsLoading(true);
+    setStatus(STATUS.LOADING);
 
     try {
-      const { data: res } = await findProperty(name);
+      const { data: res } = await findPropertyByName(name);
       setData(res.properties);
-      setError(null);
+      setStatus(STATUS.SUCCESS);
     } catch (err) {
       setError(err);
-      setData(null);
-    } finally {
-      setIsLoading(false);
+      setStatus(STATUS.FAILURE);
     }
   }, []);
 
   return {
     data,
     error,
-    isLoading,
+    isLoading: status,
     fetchProperty,
   };
 };
