@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     top: 0,
     transform: 'translateY(180px)',
+    borderRadius: `0 4px 4px 0`,
   },
   nextBtn: {
     backgroundColor: '#ffffff99',
@@ -51,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
     right: 0,
     top: 0,
     transform: 'translateY(180px)',
+    borderRadius: `4px 0 0 4px`,
   },
 }));
 
