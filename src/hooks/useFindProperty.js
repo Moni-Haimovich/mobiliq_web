@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import { STATUS } from '../utils/status';
-import { findPropertyByName } from '../services/property-service';
+import { STATUS } from "../utils/status";
+import { findPropertyByName } from "../services/property-service";
 
 export const useFindProperty = () => {
   const [data, setData] = React.useState();

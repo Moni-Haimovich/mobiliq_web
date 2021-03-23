@@ -1,35 +1,35 @@
-import React from 'react';
+import React from "react";
 
-import * as _ from 'lodash';
+import * as _ from "lodash";
 
-import Grid from '@material-ui/core/Grid';
-import AppBar from '@material-ui/core/AppBar';
-import TextField from '@material-ui/core/TextField';
-import SearchIcon from '@material-ui/icons/Search';
-import { makeStyles } from '@material-ui/core/styles';
+import Grid from "@material-ui/core/Grid";
+import AppBar from "@material-ui/core/AppBar";
+import TextField from "@material-ui/core/TextField";
+import SearchIcon from "@material-ui/icons/Search";
+import { makeStyles } from "@material-ui/core/styles";
 
-import { Property } from '../Property/Property';
-import ActionTypes from '../Context/actionTypes';
-import { DispatchContext, StateContext } from '../Context/Context';
+import { Property } from "../Property/Property";
+import ActionTypes from "../Context/actionTypes";
+import { DispatchContext, StateContext } from "../Context/Context";
 
 const useStyles = makeStyles((theme) => ({
   sidebar: {
-    height: '100vh',
+    height: "100vh",
   },
   appBar: {
-    display: 'flex',
-    justifyContent: 'around',
+    display: "flex",
+    justifyContent: "around",
     padding: theme.spacing(2),
-    height: '88px',
+    height: "88px",
   },
   propertyContainer: {
-    height: 'calc(100vh - 88px)',
-    overflowY: 'auto',
+    height: "calc(100vh - 88px)",
+    overflowY: "auto",
   },
 }));
 
 const Sidebar = () => {
-  const [searchKey, setSearchKey] = React.useState('');
+  const [searchKey, setSearchKey] = React.useState("");
 
   const classes = useStyles();
   const dispatch = React.useContext(DispatchContext);

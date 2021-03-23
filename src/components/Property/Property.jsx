@@ -1,17 +1,17 @@
-import React from 'react';
-import clsx from 'clsx';
+import React from "react";
+import clsx from "clsx";
 
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: theme.spacing(1),
   },
   titleContainer: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: "flex",
+    flexDirection: "column",
   },
   title: {
     marginLeft: 0,
@@ -25,37 +25,37 @@ const useStyles = makeStyles((theme) => ({
   },
   description: {},
   imgContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    position: 'relative',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    position: "relative",
   },
   img: {
-    width: '100%',
-    height: 'auto',
+    width: "100%",
+    height: "auto",
     margin: theme.spacing(1),
   },
   imgDescriptionContainer: {
-    position: 'absolute',
-    bottom: '0px',
+    position: "absolute",
+    bottom: "0px",
     margin: theme.spacing(1),
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
     background:
-      'linear-gradient(rgba(0,0,0,0) 0%,rgba(0,0,0,0) 20%,rgba(0,0,0,0.15) 40%,rgba(0,0,0,0.4) 60%,rgba(0,0,0,0.6) 80%,rgba(0,0,0,0.7) 100%);',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'flex-end',
+      "linear-gradient(rgba(0,0,0,0) 0%,rgba(0,0,0,0) 20%,rgba(0,0,0,0.15) 40%,rgba(0,0,0,0.4) 60%,rgba(0,0,0,0.6) 80%,rgba(0,0,0,0.7) 100%);",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-end",
   },
   imgDescription: {
-    fontSize: '.875rem',
-    lineHeight: '1.25rem',
-    letterSpacing: '.0178571429em',
-    fontWeight: '500',
-    color: 'white',
+    fontSize: ".875rem",
+    lineHeight: "1.25rem",
+    letterSpacing: ".0178571429em",
+    fontWeight: "500",
+    color: "white",
   },
   borderBottom: {
-    borderBottom: '1px solid #dddddd',
+    borderBottom: "1px solid #dddddd",
   },
 }));
 

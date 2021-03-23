@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import { STATUS } from '../utils/status';
-import { getProperties } from '../services/property-service';
+import { STATUS } from "../utils/status";
+import { getProperties } from "../services/property-service";
 
 export const useGetProperties = () => {
   const [properties, setProperties] = React.useState();

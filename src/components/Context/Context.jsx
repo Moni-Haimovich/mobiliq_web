@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import ActionTypes from './actionTypes';
+import ActionTypes from "./actionTypes";
 
 const initialState = {
   properties: [],

@@ -1,20 +1,20 @@
-import React from 'react';
-import clsx from 'clsx';
+import React from "react";
+import clsx from "clsx";
 
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
-import { makeStyles } from '@material-ui/core/styles';
+import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
+import { makeStyles } from "@material-ui/core/styles";
 
-import { Map, Marker, InfoWindow, GoogleApiWrapper } from 'google-maps-react';
+import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
 
-import config from '../../config/config.json';
+import config from "../../config/config.json";
 
-import { StateContext } from '../Context/Context';
+import { StateContext } from "../Context/Context";
 
 const MAP_STYLE = {
-  position: 'relative',
-  width: 'calc(100vw - 408px)',
-  height: '100vh',
+  position: "relative",
+  width: "calc(100vw - 408px)",
+  height: "100vh",
 };
 
 const DEFAULT_ZOOM = 12;
@@ -26,32 +26,32 @@ const DEFAULT_CENTER = {
 
 const useStyles = makeStyles((theme) => ({
   imgSwipe: {
-    width: '216px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    width: "216px",
+    marginLeft: "auto",
+    marginRight: "auto",
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
-    textAlign: 'center',
-    position: 'relative',
+    textAlign: "center",
+    position: "relative",
   },
   img: {
-    width: '100%',
-    height: '384px',
+    width: "100%",
+    height: "384px",
   },
   prevBtn: {
-    backgroundColor: '#ffffff99',
-    position: 'absolute',
+    backgroundColor: "#ffffff99",
+    position: "absolute",
     left: 0,
     top: 0,
-    transform: 'translateY(180px)',
+    transform: "translateY(180px)",
     borderRadius: `0 4px 4px 0`,
   },
   nextBtn: {
-    backgroundColor: '#ffffff99',
-    position: 'absolute',
+    backgroundColor: "#ffffff99",
+    position: "absolute",
     right: 0,
     top: 0,
-    transform: 'translateY(180px)',
+    transform: "translateY(180px)",
     borderRadius: `4px 0 0 4px`,
   },
 }));
@@ -109,20 +109,20 @@ const PropertyMap = ({ google }) => {
   }, [imgIndex]);
 
   const onOpenInfoWindow = React.useCallback(() => {
-    const nextBtn = document.getElementById('next-btn');
-    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById("next-btn");
+    const prevBtn = document.getElementById("prev-btn");
 
-    nextBtn && nextBtn.addEventListener('click', onClickNextBtn);
-    prevBtn && prevBtn.addEventListener('click', onClickPrevBtn);
+    nextBtn && nextBtn.addEventListener("click", onClickNextBtn);
+    prevBtn && prevBtn.addEventListener("click", onClickPrevBtn);
   }, [onClickNextBtn, onClickPrevBtn]);
 
   const onCloseInfoWindow = React.useCallback(() => {
     setIsShowInfoWindow(false);
 
-    const nextBtn = document.getElementById('next-btn');
-    const prevBtn = document.getElementById('prev-btn');
-    nextBtn && nextBtn.removeEventListener('click', onClickNextBtn);
-    prevBtn && prevBtn.removeEventListener('click', onClickPrevBtn);
+    const nextBtn = document.getElementById("next-btn");
+    const prevBtn = document.getElementById("prev-btn");
+    nextBtn && nextBtn.removeEventListener("click", onClickNextBtn);
+    prevBtn && prevBtn.removeEventListener("click", onClickPrevBtn);
   }, [onClickNextBtn, onClickPrevBtn]);
 
   const infoWindowRenderer = React.useMemo(
@@ -147,7 +147,7 @@ const PropertyMap = ({ google }) => {
                   <button
                     type="button"
                     id="next-btn"
-                    className={clsx('btn', 'btn-fab', classes.nextBtn)}>
+                    className={clsx("btn", "btn-fab", classes.nextBtn)}>
                     <NavigateNextIcon />
                   </button>
                 )}
@@ -155,7 +155,7 @@ const PropertyMap = ({ google }) => {
                   <button
                     type="button"
                     id="prev-btn"
-                    className={clsx('btn', 'btn-fab', classes.prevBtn)}>
+                    className={clsx("btn", "btn-fab", classes.prevBtn)}>
                     <NavigateBeforeIcon />
                   </button>
                 )}

@@ -1,24 +1,24 @@
-import React from 'react';
+import React from "react";
 
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/core/styles";
 
-import Sidebar from './components/Sidebar/Sidebar';
-import PropertyMap from './components/PropertyMap/PropertyMap';
-import { ContextProvider } from './components/Context/Context';
-import { useGetProperties } from './hooks/useGetProperties';
+import Sidebar from "./components/Sidebar/Sidebar";
+import PropertyMap from "./components/PropertyMap/PropertyMap";
+import { ContextProvider } from "./components/Context/Context";
+import { useGetProperties } from "./hooks/useGetProperties";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    display: 'flex',
+    display: "flex",
     padding: theme.spacing(0),
   },
   sidebarContainer: {
-    width: '408px',
+    width: "408px",
   },
   mapContainer: {
-    width: 'calc(100vw - 408px)',
+    width: "calc(100vw - 408px)",
   },
 }));
 
