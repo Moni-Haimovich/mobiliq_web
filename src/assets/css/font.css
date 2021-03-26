@@ -1,0 +1,19 @@
+.text-muted {
+  color: #6c757d;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.f-12 {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.f-16 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+}

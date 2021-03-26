@@ -1,74 +1,19 @@
+@import "./assets/css/border.css";
+@import "./assets/css/button.css";
+@import "./assets/css/font.css";
+@import "./assets/css/margin.css";
+@import "./assets/css/size.css";
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-
-.mt-0 {
-  margin-top: 0px !important;
-}
-
-.mb-0 {
-  margin-bottom: 0px !important;
-}
-
-.my-0 {
-  margin-top: 0px !important;
-  margin-bottom: 0px !important;
-}
-
-.ml-1 {
-  margin-left: 4px;
-}
-
-.mr-1 {
-  margin-right: 4px;
-}
-
-.text-muted {
-  color: #6c757d;
-}
-
-.text-italic {
-  font-style: italic;
-}
-
-.f-12 {
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 18px;
-}
-
-.f-16 {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 20px;
-}
-
-.w-240 {
-  width: 240px !important;
-}
-
-.btn {
-  border: none;
-  padding: 8px;
-  cursor: pointer;
-}
-
-.btn:focus {
-  outline: 0;
-}
-
-.btn-fab {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

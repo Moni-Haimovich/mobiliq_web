@@ -1,0 +1,15 @@
+.btn {
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.btn:focus {
+  outline: 0;
+}
+
+.btn-fab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

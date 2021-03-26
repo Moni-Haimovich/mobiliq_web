@@ -2,28 +2,30 @@ import React from "react";
 import clsx from "clsx";
 
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    marginLeft: theme.spacing(1),
   },
-  titleContainer: {
-    display: "flex",
+  accordionSummary: {},
+  title: {
+    margin: "0",
+    fontSize: "1.1em",
+    fontWeight: "500",
+    textTransform: "capitalize",
+  },
+  accordionDetails: {
     flexDirection: "column",
   },
-  title: {
-    marginLeft: 0,
-    marginRight: 0,
-    marginBottom: 0,
-    marginTop: 0,
-  },
-  descriptionContainer: {
+  address: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },
-  description: {},
   imgContainer: {
     display: "flex",
     flexDirection: "column",
@@ -69,7 +71,7 @@ export const Property = ({ property }) => {
           key={index.toString()}
           className={clsx({
             [classes.imgContainer]: true,
-            [classes.borderBottom]: index !== property.images.length - 1,
+            "bb-1": index !== property.images.length - 1,
           })}>
           <img
             alt="Property Image"
@@ -86,17 +88,21 @@ export const Property = ({ property }) => {
   );
 
   return (
-    <Card className={classes.root} variant="outlined">
-      <CardContent>
-        <div className={classes.titleContainer}>
-          <h2 className={classes.title}> {property.name} </h2>
-          <span className="f-12 text-muted"> {property.address} </span>
-        </div>
-        <div className={classes.descriptionContainer}>
-          <span className={classes.description}> {property.description} </span>
+    <Accordion className={classes.root}>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="property-content"
+        id="property-header"
+        className={classes.accordionSummary}>
+        <h2 className={classes.title}> {property.name} </h2>
+        <span className="f-12 ml-auto text-muted">{property.description}</span>
+      </AccordionSummary>
+      <AccordionDetails className={classes.accordionDetails}>
+        <div className={classes.address}>
+          <span className="text-italic"> {property.address} </span>
         </div>
         {imgRenderer}
-      </CardContent>
-    </Card>
+      </AccordionDetails>
+    </Accordion>
   );
 };
