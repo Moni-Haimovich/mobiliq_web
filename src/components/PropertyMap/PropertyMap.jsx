@@ -65,8 +65,6 @@ const PropertyMap = ({ google }) => {
 
   const [img, setImg] = React.useState();
   const [imgIndex, setImgIndex] = React.useState(0);
-  const [isFirstImg, setIsFirstImg] = React.useState(true);
-  const [isLastImg, setIsLastImg] = React.useState(false);
 
   const classes = useStyles();
   const { filteredProperties: properties } = React.useContext(StateContext);
@@ -99,14 +97,15 @@ const PropertyMap = ({ google }) => {
 
   const onClickNextBtn = React.useCallback(() => {
     const imgLength = property.images.length - 1;
-    const nextIndex = imgIndex === imgLength ? imgLength : imgIndex + 1;
+    const nextIndex = imgIndex === imgLength ? 0 : imgIndex + 1;
     setImgIndex(nextIndex);
   }, [imgIndex, property]);
 
   const onClickPrevBtn = React.useCallback(() => {
-    const prevIndex = imgIndex === 0 ? 0 : imgIndex - 1;
+    const imgLength = property.images.length - 1;
+    const prevIndex = imgIndex === 0 ? imgLength : imgIndex - 1;
     setImgIndex(prevIndex);
-  }, [imgIndex]);
+  }, [imgIndex, property]);
 
   const onOpenInfoWindow = React.useCallback(() => {
     const nextBtn = document.getElementById("next-btn");
@@ -143,22 +142,18 @@ const PropertyMap = ({ google }) => {
                   src={img.url}
                   className={classes.img}
                 />
-                {!isLastImg && (
-                  <button
-                    type="button"
-                    id="next-btn"
-                    className={clsx("btn", "btn-fab", classes.nextBtn)}>
-                    <NavigateNextIcon />
-                  </button>
-                )}
-                {!isFirstImg && (
-                  <button
-                    type="button"
-                    id="prev-btn"
-                    className={clsx("btn", "btn-fab", classes.prevBtn)}>
-                    <NavigateBeforeIcon />
-                  </button>
-                )}
+                <button
+                  type="button"
+                  id="next-btn"
+                  className={clsx("btn", "btn-fab", classes.nextBtn)}>
+                  <NavigateNextIcon />
+                </button>
+                <button
+                  type="button"
+                  id="prev-btn"
+                  className={clsx("btn", "btn-fab", classes.prevBtn)}>
+                  <NavigateBeforeIcon />
+                </button>
                 <span className="f-16 mr-1">{img.description}</span>
                 <span>&#x25CF;</span>
                 <span className="ml-1 text-italic">{img.size}</span>
@@ -175,8 +170,6 @@ const PropertyMap = ({ google }) => {
       onCloseInfoWindow,
       img,
       classes,
-      isFirstImg,
-      isLastImg,
     ],
   );
 
@@ -185,11 +178,6 @@ const PropertyMap = ({ google }) => {
 
     const newImg = property.images[imgIndex];
     setImg(newImg);
-
-    const firstImg = imgIndex === 0;
-    const lastImg = imgIndex === property.images.length - 1;
-    setIsFirstImg(firstImg);
-    setIsLastImg(lastImg);
   }, [imgIndex, property]);
 
   // set map center & bounds according to properties length
