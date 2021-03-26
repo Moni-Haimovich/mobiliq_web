@@ -1,9 +1,9 @@
 import React from "react";
 import clsx from "clsx";
 
+import { makeStyles } from "@material-ui/core/styles";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
-import { makeStyles } from "@material-ui/core/styles";
 
 import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
 
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     top: 0,
     transform: "translateY(180px)",
-    borderRadius: `0 4px 4px 0`,
+    borderRadius: `50%`,
   },
   nextBtn: {
     backgroundColor: "#ffffff99",
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     right: 0,
     top: 0,
     transform: "translateY(180px)",
-    borderRadius: `4px 0 0 4px`,
+    borderRadius: `50%`,
   },
 }));
 

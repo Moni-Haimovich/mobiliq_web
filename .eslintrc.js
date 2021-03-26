@@ -19,5 +19,6 @@ module.exports = {
     "react/prop-types": "off",
     "import/prefer-default-export": "off",
     "jsx-a11y/img-redundant-alt": "off",
+    "no-underscore-dangle": "off",
   },
 };

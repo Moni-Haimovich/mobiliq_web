@@ -1,11 +1,12 @@
 import React from "react";
-import clsx from "clsx";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
+import { ImageSlider } from "../ImageSlider/ImageSlider";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,66 +27,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },
-  imgContainer: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    position: "relative",
-  },
-  img: {
-    width: "100%",
-    height: "auto",
-    margin: theme.spacing(1),
-  },
-  imgDescriptionContainer: {
-    position: "absolute",
-    bottom: "0px",
-    margin: theme.spacing(1),
-    width: "100%",
-    height: "100%",
-    background:
-      "linear-gradient(rgba(0,0,0,0) 0%,rgba(0,0,0,0) 20%,rgba(0,0,0,0.15) 40%,rgba(0,0,0,0.4) 60%,rgba(0,0,0,0.6) 80%,rgba(0,0,0,0.7) 100%);",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "flex-end",
-  },
-  imgDescription: {
-    fontSize: ".875rem",
-    lineHeight: "1.25rem",
-    letterSpacing: ".0178571429em",
-    fontWeight: "500",
-    color: "white",
-  },
-  borderBottom: {
-    borderBottom: "1px solid #dddddd",
-  },
 }));
 
 export const Property = ({ property }) => {
   const classes = useStyles();
-
-  const imgRenderer = React.useMemo(
-    () =>
-      property.images.map((img, index) => (
-        <div
-          key={index.toString()}
-          className={clsx({
-            [classes.imgContainer]: true,
-            "bb-1": index !== property.images.length - 1,
-          })}>
-          <img
-            alt="Property Image"
-            src={img.url}
-            title={img.description}
-            className={classes.img}
-          />
-          <div className={classes.imgDescriptionContainer}>
-            <span className={classes.imgDescription}>{img.description}</span>
-          </div>
-        </div>
-      )),
-    [classes, property],
-  );
 
   return (
     <Accordion className={classes.root}>
@@ -101,7 +46,7 @@ export const Property = ({ property }) => {
         <div className={classes.address}>
           <span className="text-italic"> {property.address} </span>
         </div>
-        {imgRenderer}
+        <ImageSlider images={property.images} />
       </AccordionDetails>
     </Accordion>
   );
