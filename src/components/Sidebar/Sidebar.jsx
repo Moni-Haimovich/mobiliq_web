@@ -16,11 +16,13 @@ const useStyles = makeStyles((theme) => ({
   sidebar: {
     height: "100vh",
   },
+  appBarContainer: {
+    height: "88px",
+  },
   appBar: {
     display: "flex",
     justifyContent: "around",
     padding: theme.spacing(2),
-    height: "88px",
   },
   propertyContainer: {
     height: "calc(100vh - 88px)",
@@ -58,7 +60,7 @@ const Sidebar = () => {
 
   return (
     <Grid container spacing={1} className={classes.sidebar}>
-      <Grid item xs={12}>
+      <Grid item xs={12} className={classes.appBarContainer}>
         <AppBar
           position="static"
           className={classes.appBar}
